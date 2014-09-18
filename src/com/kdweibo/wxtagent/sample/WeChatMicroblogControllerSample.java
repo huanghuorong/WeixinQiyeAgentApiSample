@@ -64,7 +64,10 @@ public class WeChatMicroblogControllerSample {
         if(nowtime - signatureCreatetime > signatureExpireTime*1000){
         	errorsb.append("Authentication signature from require has expire in "+signatureExpireTime+"s! "
         			+ "appSecret="+appSecret+",signature="+signature+",timestamp="+timestamp+",nonce="+nonce);
-        	return false;
+        	//return false;
+        	System.out.println("Authentication signature from require has expire in "+signatureExpireTime+"s! "
+        			+ "Skip this error,because I can not ensure agent system date same as business system date."
+        			+ "appSecret="+appSecret+",signature="+signature+",timestamp="+timestamp+",nonce="+nonce);
         }
         
         //5.TODO 业务端授权中心记录signature,timestamp[建议持久化到db]，
